@@ -13,17 +13,20 @@ require_once __DIR__ . '/../src/Models/User.php';
 require_once __DIR__ . '/../src/Controllers/HomeController.php';
 require_once __DIR__ . '/../src/Controllers/AuthController.php';
 require_once __DIR__ . '/../src/Controllers/VideoController.php';
+require_once __DIR__ . '/../src/Models/Comment.php';
+require_once __DIR__ . '/../src/Controllers/CommentController.php';
 
 use App\Core\Router;
 use App\Controllers\HomeController;
 use App\Controllers\AuthController;
 use App\Controllers\VideoController;
 use App\Models\Video;
+use App\Controllers\CommentController;
 
 $router = new Router();
 
 $router->add('GET', '/test', [new HomeController(), 'test']);
-
+$router->add('POST', '/comment/add', [new CommentController(), 'add']);
 $router->add('GET', '/register', [new AuthController(), 'register']);
 $router->add('POST', '/register', [new AuthController(), 'register']);
 $router->add('GET', '/login', [new AuthController(), 'login']);
